@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slackctl"
+version = "0.1.0"
+description = "A collection of handy CLI utilities for Slack (purging messages, exporting history, etc.)"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "requests>=2.31.0",
+    "click>=8.1.7",
+]
+
+[project.scripts]
+slackctl = "slackctl.cli:main"
+slack-wipe = "slackctl.cli:wipe_compat"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["slackctl*"]
+
+[tool.setuptools.package-data]
+slackctl = ["templates/*"]
