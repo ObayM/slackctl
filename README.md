@@ -15,22 +15,33 @@ you need to build a quick slack app to get a token:
 3. click install to workspace and copy the token starting with xoxp-.
 
 ### install
-make sure your python venv is active, then run:
 ```bash
-pip install -e .
+pip install slackctl
 ```
 
 ## config
-save your credentials in a `.env` file so you don't have to keep pasting them:
+
+you can pass your token and channel directly in the commands:
+```bash
+slackctl purge -t xoxp-your-token -c channel-id
+```
+
+or set them as global environment variables:
+```bash
+export SLACK_TOKEN="xoxp-your-token"
+export SLACK_CHANNEL="channel-id"
+```
+
+or save them in a `.env` file in whatever directory you run the command from:
 ```env
-SLACK_TOKEN="xoxp-your-token-here"
-SLACK_CHANNEL="your-channel-id-here"
+SLACK_TOKEN="xoxp-your-token"
+SLACK_CHANNEL="channel-id"
 ```
 
 ## commands
 
 ### purge
-deletes your messages from the target channel using slack's search api.
+deletes your messages from the target channel.
 
 dry run (safely checks what would get deleted):
 ```bash
